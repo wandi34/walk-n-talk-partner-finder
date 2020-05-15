@@ -1,34 +1,40 @@
 import 'dart:convert';
 import 'dart:io';
+
 var tribeMember = ['Annina','Jana','Nadja','Isabella','Roman','Basti','Julian','Andi','Stefan','Matthias','Gunnar'];
 
 main(List<String> arguments) {
-  if (arguments.length > 0) {
-    tribeMember = [];
-    arguments.forEach((x) => tribeMember.add(x.replaceAll(",", "")));
-  }
+  tribeMember = checkForListReplace(arguments, tribeMember);
   print("Die derzeitige Liste für Walk n Talk ist: $tribeMember \n");
-  checkForMemberDelete();
-  checkForMemberAdd();
+  tribeMember = checkForMemberDelete(tribeMember);
+  tribeMember = checkForMemberAdd(tribeMember);
   findPartners();
 }
 
-List<String> checkForMemberDelete() {
+List<String> checkForListReplace(List<String> arguments, List<String> currentList) {
+  if (arguments.length > 0) {
+    currentList = [];
+    arguments.forEach((x) => currentList.add(x.replaceAll(",", "")));
+  }
+  return currentList;
+}
+
+List<String> checkForMemberDelete(List<String> currentList) {
   print("Sollen Mitglieder entfernt werden? Schreibe die Namen mit Kommas getrennt auf:");
   var toDeleteStr = stdin.readLineSync(encoding: Encoding.getByName('utf-8'));
   List<String> toDelete = toDeleteStr.replaceAll(" ", "").split(",");
-  toDelete.forEach((x) => tribeMember.remove(x));
-  print("Neue Liste: $tribeMember \n");
-  return tribeMember;
+  toDelete.forEach((x) => currentList.remove(x));
+  print("Neue Liste: $currentList \n");
+  return currentList;
 }
 
-List<String> checkForMemberAdd() {
+List<String> checkForMemberAdd(List<String> currentList) {
   print("Sollen Mitglieder hinzugefügt werden? Schreibe die Namen mit Kommas getrennt auf:");
   var toAddStr = stdin.readLineSync(encoding: Encoding.getByName('utf-8'));
   List<String> toAdd = toAddStr.replaceAll(" ", "").split(",");
-  toAdd.forEach((x) => tribeMember.add(x));
-  print("Neue Liste: $tribeMember \n");
-  return tribeMember;
+  toAdd.forEach((x) => currentList.add(x));
+  print("Neue Liste: $currentList \n");
+  return currentList;
 }
 
 findPartners() {
