@@ -1,7 +1,7 @@
 # Walk n Talk Partner Finder
 
 ## Verwendung
-Die Anwendung kann als `.exe` oder als `.sh` file in der Konsole gestartet werden. Der aktuelle Stand der Member ist im Code hard codiert. 
+Die Anwendung kann als `.exe` oder als `.sh` file in der Konsole gestartet werden. Die kompilierten Binaries sind bei den Releases zu finden (https://github.com/wandi34/walk-n-talk-partner-finder/releases). Der aktuelle Stand der Member ist als Default im Code gespeichert. 
 
 ## Member anpassen
 Die Personen für die Auswahl können auf zwei Wege geändert werden
