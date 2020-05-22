@@ -22,6 +22,9 @@ List<String> checkForListReplace(List<String> arguments, List<String> currentLis
 List<String> checkForMemberDelete(List<String> currentList) {
   print("Sollen Mitglieder entfernt werden? Schreibe die Namen mit Kommas getrennt auf:");
   var toDeleteStr = stdin.readLineSync(encoding: Encoding.getByName('utf-8'));
+  if (toDeleteStr.trim().isEmpty) {
+    return currentList;
+  }
   List<String> toDelete = toDeleteStr.replaceAll(" ", "").split(",");
   toDelete.forEach((x) => currentList.remove(x));
   print("Neue Liste: $currentList \n");
@@ -31,6 +34,9 @@ List<String> checkForMemberDelete(List<String> currentList) {
 List<String> checkForMemberAdd(List<String> currentList) {
   print("Sollen Mitglieder hinzugefügt werden? Schreibe die Namen mit Kommas getrennt auf:");
   var toAddStr = stdin.readLineSync(encoding: Encoding.getByName('utf-8'));
+  if (toAddStr.trim().isEmpty) {
+    return currentList;
+  }
   List<String> toAdd = toAddStr.replaceAll(" ", "").split(",");
   toAdd.forEach((x) => currentList.add(x));
   print("Neue Liste: $currentList \n");
